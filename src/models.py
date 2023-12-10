@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import MetaData,Table,Column,INTEGER,VARCHAR,TEXT,JSON,TIMESTAMP,BOOLEAN, ForeignKey
+from sqlalchemy import MetaData, Table, Column, INTEGER, VARCHAR, TEXT, ForeignKey, JSON, TIMESTAMP, BOOLEAN
 
 metadata = MetaData()
 
@@ -30,7 +30,7 @@ completed_exercise = Table(
     Column("user_id", INTEGER, ForeignKey("user.id")),
     Column("exercise_id", INTEGER, ForeignKey("exercise.id")),
     Column("score", INTEGER, nullable=False),
-    Column("competed_at", TIMESTAMP, default=datetime.utcnow),
+    Column("completed_at", TIMESTAMP, default=datetime.utcnow),
     Column("answers", JSON, nullable=False),
 )
 
@@ -45,4 +45,37 @@ user = Table(
         Column("is_active", BOOLEAN, nullable=False),
         Column("is_superuser", BOOLEAN, nullable=False),
         Column("is_verified", BOOLEAN, nullable=False),
+)
+
+grammar = Table(
+    "grammar",
+    metadata,
+    Column("id", INTEGER, primary_key=True),
+    Column("title", VARCHAR, nullable=False),
+    Column("description", TEXT, nullable=False)
+)
+
+vocabulary = Table(
+    "vocabulary",
+    metadata,
+    Column("id", INTEGER, primary_key=True),
+    Column("word", VARCHAR, nullable=False),
+    Column("example", TEXT, nullable=False),
+)
+
+test = Table(
+    "test",
+    metadata,
+    Column("id", INTEGER, primary_key=True),
+    Column("questions", JSON, nullable=False),
+)
+
+media = Table(
+    "media",
+    metadata,
+    Column("id", INTEGER, primary_key=True),
+    Column("type", VARCHAR, nullable=False),
+    Column("title", VARCHAR, nullable=False),
+    Column("description", TEXT, nullable=False),
+    Column("duration", VARCHAR, nullable=False),
 )

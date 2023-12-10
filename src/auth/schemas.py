@@ -1,8 +1,5 @@
-import uuid
 from typing import Optional
-
 from fastapi_users import schemas
-
 
 class UserRead(schemas.BaseUser[int]):
     id: int
@@ -15,7 +12,6 @@ class UserRead(schemas.BaseUser[int]):
 
     class Config:
         orm_mode = True
-
 
 class UserCreate(schemas.BaseUserCreate):
     username: str
