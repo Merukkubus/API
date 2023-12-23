@@ -50,7 +50,7 @@ async def send_test_answers(test_id: int, answers: str, session: AsyncSession = 
     result = ''
     count = 0
     for i in range(0, end):
-        if (correct_answers[i] == ans_list[i]):
+        if (correct_answers[i].lower() == ans_list[i].lower()):
             result += str(i + 1) + " True "
             count += 1
         else:

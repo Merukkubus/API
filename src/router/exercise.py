@@ -35,7 +35,7 @@ async def send_exercise_answers(exercise_id: int, answers: str, session: AsyncSe
     count = 0
     for i in range(0, end):
         correct_answers = first_el[0][i]
-        if(correct_answers['answer'] == ans_list[i]):
+        if(correct_answers['answer'].lower() == ans_list[i].lower()):
             result += str(i+1) + " True "
             count += 1
         else:

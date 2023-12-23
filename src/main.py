@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from src.auth.base_config import auth_backend, fastapi_users
 from src.auth.schemas import UserRead, UserCreate
-
 from src.router.lesson import router as lesson_router
 from src.router.exercise import router as exercise_router
 from src.router.translate import router as translate_router
